@@ -1,4 +1,4 @@
-#apily-dropbox
+#dropbox
 
 Apily client for Dropbox API
 
