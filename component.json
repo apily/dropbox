@@ -12,7 +12,8 @@
     "index.js"
   ],
   "dependencies": {
-    "apily/request": "*"
+    "apily/request": "*",
+    "component/querystring": "*"
   },
   "license": "MIT"
 }
