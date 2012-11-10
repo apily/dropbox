@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 
-var request = require('apily-request');
+var request = require('request');
 
 /**
  * Expose dropbox.
