@@ -32,7 +32,7 @@ dropbox.auth = function (options, callback) {
   }
 
   request
-    .get('/api-oauth/dropbox/is_authorized')
+    .get('/api-oauth/dropbox/authorized')
     .end(function (res) {
       var data = res.body || res.text;
 
@@ -50,6 +50,27 @@ dropbox.auth = function (options, callback) {
       err.status = res.status;
       callback(err, null);
       return;
+    });
+};
+
+dropbox.is_authorized = function (options, callback) {
+  if (typeof options === 'function') {
+    callback = options;
+  }
+
+  request
+    .get('/api-oauth/dropbox/is_authorized')
+    .end(function (res) {
+      var data = res.body || res.text;
+
+      if (res.ok) {
+        callback(null, data);
+        return;
+      } else {
+        err.data = data;
+        err.status = res.status;
+        callback(err, null);
+      }
     });
 };
 
