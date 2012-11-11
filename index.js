@@ -162,6 +162,7 @@ dropbox.files.metadata = function (options, callback) {
     .query({url: url})
     .end(function (res) {
       var data = res.body || res.text;
+      var err = {};
 
       if (res.ok) {
         callback(null, data);
@@ -179,3 +180,86 @@ dropbox.files.metadata = function (options, callback) {
       return;
     });
 };
+
+/**
+ * User
+ */
+
+var user = exports.user = {};
+
+user.login = function(params, callback) {
+  request
+    .post('/api-oauth/user/login')
+    .send(params)
+    .end(function (res) {
+      var data = res.body || res.text;
+      var err = {};
+
+      if (res.ok) {
+        callback(null, data);
+     } else {
+      err.data = data;
+      err.status = res.status;
+      callback(err);
+     }
+    });
+};
+
+user.logout = function(callback) {
+  request
+    .get('/api-oauth/user/logout')
+    .end(function (res) {
+      var data = res.body || res.text;
+      var err = {};
+
+      if (res.ok) {
+        callback(null, data);
+      } else {
+        err.data = data;
+        err.status = res.status;
+        callback(err);
+      }
+    });
+};
+
+user.signup = function(params) {
+  request
+    .post('/api-oauth/user/signup')
+    .send({
+      email: params.email,
+      password: params.password,
+      password_confirm: params.password
+    })
+    .end(function (res) {
+      var data = res.body || res.text;
+      var err = {};
+
+      if (res.ok) {
+        callback(null, data);
+      } else {
+        err.data = data;
+        err.status = res.status;
+        callback(err);
+      }
+    });
+};
+
+user.is_logged = function(callback) {
+  request
+    .get('/api-oauth/user/is-logged')
+    .end(function (res) {
+      var data = res.body || res.text;
+      var err = {};
+
+      if (res.ok) {
+        callback(null, data);
+      } else {
+        err.data = data;
+        err.status = res.status;
+        callback(err);
+      }
+    });
+};
+
+
+
