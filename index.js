@@ -3,6 +3,7 @@
  */
 
 var request = require('request');
+var querystring = require('component-querystring');
 
 /**
  * Expose dropbox.
