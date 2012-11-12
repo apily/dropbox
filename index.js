@@ -243,7 +243,7 @@ user.logout = function(callback) {
     });
 };
 
-user.signup = function(params) {
+user.signup = function(params, callback) {
   request
     .post('/api-oauth/user/signup')
     .send({
