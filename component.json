@@ -13,6 +13,7 @@
   ],
   "dependencies": {
     "apily/request": "*",
+    "apily/user": "*",
     "component/querystring": "*"
   },
   "license": "MIT"
